@@ -4,6 +4,7 @@ module SessionsHelper
   end
   
   def logged_in?
+    # ログインチェック
     !!current_user
   end
 end
