@@ -7,7 +7,7 @@ class ToppagesController < ApplicationController
       # 空のデータのインスタンスとは→Micropost.new
       # これを現在のUserに紐付けるために、current_user.microposts.buildとしている
       @micropost = current_user.microposts.build #form_for用
-      @microposts = current_user.microposts.order('created_at DESC').page(params[:page])
+      @microposts = current_user.feed_microposts.order('created_at DESC').page(params[:page])
     end
   end
 end
