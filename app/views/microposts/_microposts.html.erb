@@ -15,6 +15,12 @@
           <% if current_user == micropost.user %>
             <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
+          <!-- お気に入りされているときにはUnlikeを、されていないときにはLikeを実行するようにif文を書く -->
+          <% if current_user.likes?(micropost) %>
+            <%= link_to "Unlike", favorite_path(current_user.favorites.find_by(micropost_id: micropost.id)), method: :delete %>
+          <% else %>
+            <%= link_to "Like", favorites_path(micropost_id: micropost.id), method: :post %>
+          <% end %>
         </div>
       </div>
     </li>
